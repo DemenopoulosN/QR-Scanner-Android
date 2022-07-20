@@ -1,0 +1,77 @@
+{
+  "project_info": {
+    "project_number": "978601745720",
+    "firebase_url": "https://smart-e-tickets-android-wearos-default-rtdb.firebaseio.com",
+    "project_id": "smart-e-tickets-android-wearos",
+    "storage_bucket": "smart-e-tickets-android-wearos.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:978601745720:android:2fac5dbd7be39629fa75cd",
+        "android_client_info": {
+          "package_name": "com.unipi.p17024.myqrpass"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "978601745720-mcsn672kf2j2pa586enlgcchsr32mu12.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.unipi.p17024.myqrpass",
+            "certificate_hash": "d42cc5378fea8e05224ccd9aade50b97a3a1dc8d"
+          }
+        },
+        {
+          "client_id": "978601745720-27s8j6bdduumjc6tiji79pvc8fi4fvq6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANrxPxAQ7zcDMGFtLhnh3ye7ZSBxREmPo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "978601745720-27s8j6bdduumjc6tiji79pvc8fi4fvq6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:978601745720:android:2d71b6b53032fa8cfa75cd",
+        "android_client_info": {
+          "package_name": "com.unipi.p17024.qrscanner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "978601745720-27s8j6bdduumjc6tiji79pvc8fi4fvq6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANrxPxAQ7zcDMGFtLhnh3ye7ZSBxREmPo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "978601745720-27s8j6bdduumjc6tiji79pvc8fi4fvq6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
