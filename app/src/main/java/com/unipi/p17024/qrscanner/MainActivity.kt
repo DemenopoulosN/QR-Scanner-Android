@@ -102,6 +102,7 @@ class MainActivity : Activity() {
                                 intent.putExtra("userID", userId.toString())
                                 intent.putExtra("invalid", "no")
                                 startActivity(intent)
+                                //comment
                             }
                             else{
                                 Toast.makeText(this@MainActivity, "Database access denied. Please try again with another QR",Toast.LENGTH_SHORT).show()
