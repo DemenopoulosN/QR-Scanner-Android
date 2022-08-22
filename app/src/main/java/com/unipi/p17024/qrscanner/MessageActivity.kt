@@ -2,15 +2,15 @@ package com.unipi.p17024.qrscanner
 
 import android.app.Activity
 import android.content.ContentValues
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import android.widget.Toast
 import com.google.firebase.database.*
-import com.unipi.p17024.qrscanner.databinding.ActivityMainBinding
 import com.unipi.p17024.qrscanner.databinding.ActivityMessageBinding
+
 
 class MessageActivity : Activity() {
     private lateinit var binding: ActivityMessageBinding
@@ -29,7 +29,7 @@ class MessageActivity : Activity() {
         val userID = intent.getStringExtra("userID").toString()
         val invalid = intent.getStringExtra("invalid").toString()
 
-        databaseRef.addValueEventListener(object: ValueEventListener{
+        databaseRef.addListenerForSingleValueEvent(object: ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 if(snapshot.child("Clients").child(userID).child("Valid Subscription").value.toString() == "yes"){
                     binding.textMessage.text = "Valid"
@@ -37,10 +37,9 @@ class MessageActivity : Activity() {
                     //binding.textName.text = snapshot.child("Clients").child(userID).child("Name").value.toString()
                     //binding.textSurname.text = snapshot.child("Clients").child(userID).child("Surname").value.toString()
 
+
                     // Delete token child after elapsed time
-                    Handler(Looper.getMainLooper()).postDelayed({
-                        databaseRef.child("Tokens").child(token).removeValue()
-                    }, 20000) //20 seconds
+                    deleteToken(token);
                 }
                 else if(invalid == "yes"){
                     binding.textMessage.text = "No such user exists"
@@ -54,9 +53,7 @@ class MessageActivity : Activity() {
 
 
                     // Delete token child after elapsed time
-                    Handler(Looper.getMainLooper()).postDelayed({
-                        databaseRef.child("Tokens").child(token).removeValue()
-                    }, 20000) //20 seconds
+                    deleteToken(token);
                 }
             }
 
@@ -67,5 +64,17 @@ class MessageActivity : Activity() {
             }
         })
 
+
+    }
+
+    private fun deleteToken(string: String){
+        Handler(Looper.getMainLooper()).postDelayed({
+            databaseRef.child("Tokens").child(string).removeValue()
+        }, 20000) //20 seconds
+    }
+
+    override fun onBackPressed() {
+        val intent = Intent(this@MessageActivity, MainActivity::class.java)
+        startActivity(intent)
     }
 }

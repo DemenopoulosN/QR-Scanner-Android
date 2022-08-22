@@ -88,12 +88,12 @@ class MainActivity : Activity() {
             runOnUiThread {
 
                 // Read from the database
-                tokensRef.addValueEventListener(object: ValueEventListener {
+                tokensRef.addListenerForSingleValueEvent(object: ValueEventListener {
 
                     override fun onDataChange(snapshot: DataSnapshot) {
                         if(snapshot.exists() && snapshot.hasChild(it.text.toString())){
                             val timestamp:Long  = snapshot.child(it.text.toString()).child("timestamp").value as Long
-                            if ( timestamp > (System.currentTimeMillis() - 30000)){ //30seconds
+                            if ( timestamp > (System.currentTimeMillis() - 30000)){ // token exists for less than 30 seconds
                                 val userId = snapshot.child(it.text.toString()).child("userID").value
 
                                 //starting MessageActivity
@@ -102,10 +102,10 @@ class MainActivity : Activity() {
                                 intent.putExtra("userID", userId.toString())
                                 intent.putExtra("invalid", "no")
                                 startActivity(intent)
-                                //comment
                             }
                             else{
-                                Toast.makeText(this@MainActivity, "Database access denied. Please try again with another QR",Toast.LENGTH_SHORT).show()
+                                Toast.makeText(this@MainActivity, "Database access denied. " +
+                                        "Please try again with another QR",Toast.LENGTH_SHORT).show()
 
                                 val mIntent = intent
                                 finish()
@@ -123,7 +123,6 @@ class MainActivity : Activity() {
                             intent.putExtra("invalid", "yes")
                             startActivity(intent)
                         }
-
                     }
                     override fun onCancelled(error: DatabaseError) {
                         Log.w(TAG, "Failed to read value.", error.toException())
