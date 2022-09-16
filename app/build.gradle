@@ -34,6 +34,7 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    namespace 'com.unipi.p17024.qrscanner'
 }
 
 dependencies {
